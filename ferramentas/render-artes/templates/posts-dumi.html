@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Posts Dumi</title>
+<!--
+  TEMPLATE DE POST E STORY — DUMI SABORES ORIENTAIS (v1, 03/10/2026)
+  Gera feed.png (1080×1350) e/ou story.png (1080×1920) com o MESMO conteúdo.
+  Motor: ferramentas/render-artes/render.mjs · Conferência: conferir.mjs
+    (feed: 60 px laterais / 40 px topo-base · story: 250 px topo / 340 px base).
+  Como usar: copiar para marketing/producao/AAAA-MM/<ID>/arte.html e editar SÓ o bloco DADOS.
+  Agente: .claude/agents/diretor-arte.md · Marca: img/PALETA-DUMI.md
+  Exemplo: Yakisoba com dados REAIS do cardápio (app.js). Tarja "MODELO" até `modelo: false`.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+/* ======================================================================
+   DADOS — a única parte que se edita
+   RAIZ: deste template → "../../../" · da pasta da peça (marketing/producao/AAAA-MM/<ID>/) → "../../../../"
+   formatos: ["feed"], ["story"] ou ["feed", "story"] (um PNG por formato).
+   foto: caminho a partir da raiz do projeto. Para feed/story prefira foto em alta
+         (img/*.jpg dos pratos tem 900 px de largura).
+   preco: só valores de briefing/fatos.json → precos_confirmados. Deixe "" para não mostrar.
+   ====================================================================== */
+const DADOS = {
+  RAIZ: "../../../",
+  modelo: true,                       // true = carimba "MODELO — NÃO PUBLICAR"
+  formatos: ["feed", "story"],
+  foto: "img/yakisoba.jpg",
+  kicker: "Japão",
+  titulo: "Yakisoba no *ponto certo*",
+  apoio: "Macarrão, legumes, verduras e proteínas refogados em um molho espesso à base de shoyu.",
+  preco: "R$ 38,00",
+  botao: "Peça pelo iFood",
+  rodape: "@dumisaboresorientais"
+};
+</script>
+
+<style>
+  :root {
+    --bg: #121212; --surface: #1B1B1B; --gold: #D4AF37; --gold-light: #E9CD73;
+    --red: #C8102E; --red-cta-a: #E5233F; --red-cta-b: #9C0C24; --text: #FFFFFF; --muted: #E5E7EB;
+    --serif: "Playfair Display", Georgia, serif; --sans: "Inter", Arial, sans-serif;
+    --padrao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='36'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-opacity='0.05' stroke-width='1'%3E%3Cpath d='M0 36 A18 18 0 0 1 36 36 A18 18 0 0 1 72 36'/%3E%3Cpath d='M0 18 A18 18 0 0 1 36 18 A18 18 0 0 1 72 18'/%3E%3Cpath d='M0 0 A18 18 0 0 1 36 0 A18 18 0 0 1 72 0'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 40px; background: #2b2b2b; display: flex; flex-direction: column; gap: 40px; }
+
+  .arte { position: relative; width: 1080px; overflow: hidden; flex: none; background: var(--bg) var(--padrao) repeat; color: var(--text); font-family: var(--sans); }
+  .feed  { height: 1350px; }
+  .story { height: 1920px; }
+
+  .foto { position: absolute; left: 0; top: 0; width: 100%; object-fit: cover; }
+  .feed .foto  { height: 880px; }
+  .story .foto { height: 1180px; }
+  .vela { position: absolute; inset: 0; pointer-events: none; }
+  .feed .vela  { background: linear-gradient(to bottom, rgba(18,18,18,.55) 0%, rgba(18,18,18,0) 18%, rgba(18,18,18,0) 42%, #121212 66%); }
+  .story .vela { background: linear-gradient(to bottom, rgba(18,18,18,.35) 0%, rgba(18,18,18,0) 22%, rgba(18,18,18,0) 40%, #121212 62%); }
+
+  .logo { position: absolute; left: 60px; width: 104px; height: 104px; border-radius: 50%; overflow: hidden; background: #000; box-shadow: 0 6px 24px rgba(0,0,0,.45); }
+  .feed .logo  { top: 56px; }
+  .story .logo { top: 270px; }           /* abaixo da barra do Instagram (250 px) */
+  .logo img { display: block; width: 180%; height: 180%; margin: -40%; }
+
+  .texto { position: absolute; left: 60px; right: 60px; }
+  .feed .texto  { bottom: 72px; }
+  .story .texto { bottom: 380px; }       /* acima da área de resposta do story (340 px) */
+  .kicker { display: flex; align-items: center; gap: 18px; font: 600 26px/1.2 var(--sans); letter-spacing: .32em; text-transform: uppercase; color: var(--gold); margin: 0 0 24px; }
+  .kicker::before { content: ""; width: 56px; height: 2px; background: var(--gold); flex: none; }
+  .titulo { font: 700 96px/1.04 var(--serif); margin: 0; letter-spacing: -.01em; }
+  .titulo em { font-style: italic; font-weight: 600; color: var(--gold-light); }
+  .apoio { font: 400 32px/1.42 var(--sans); color: var(--muted); margin: 26px 0 0; max-width: 900px; }
+  .linha { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 36px; }
+  .preco { font: 600 58px/1 var(--serif); color: var(--gold); }
+  .botao { padding: 26px 52px; border-radius: 999px; font: 700 32px/1 var(--sans); color: #fff; white-space: nowrap;
+           background: linear-gradient(135deg, var(--red-cta-a), var(--red-cta-b)); box-shadow: 0 12px 36px rgba(200,16,46,.45); }
+  .rodape { margin: 30px 0 0; font: 600 24px/1.2 var(--sans); letter-spacing: .12em; color: var(--gold); }
+
+  .tarja-modelo { position: absolute; left: -200px; right: -200px; top: 44%; padding: 18px 0; transform: rotate(-24deg);
+                  background: rgba(200,16,46,.85); color: #fff; text-align: center; font: 800 44px/1 var(--sans); letter-spacing: .3em; }
+</style>
+</head>
+<body>
+<main id="artes"></main>
+
+<script>
+/* MONTAGEM — não precisa editar. Um .arte por formato, data-out = feed.png / story.png. */
+(function () {
+  const D = DADOS;
+  const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+  const comEnfase = (tag, cls, txt) => {
+    const e = el(tag, cls);
+    String(txt).split("*").forEach((parte, i) => { if (!parte) return; e.append(i % 2 ? el("em", null, parte) : document.createTextNode(parte)); });
+    return e;
+  };
+  const alvo = document.getElementById("artes");
+
+  D.formatos.forEach((f) => {
+    const a = el("section", "arte " + f);
+    a.setAttribute("data-out", f + ".png");
+
+    const foto = el("img", "foto"); foto.src = D.RAIZ + D.foto; foto.alt = "";
+    const logo = el("div", "logo"); const li = el("img"); li.src = D.RAIZ + "img/logo.png"; li.alt = "Dumi Sabores Orientais"; logo.append(li);
+    a.append(foto, el("div", "vela"), logo);
+
+    const t = el("div", "texto");
+    if (D.kicker) t.append(el("p", "kicker", D.kicker));
+    t.append(comEnfase("h2", "titulo", D.titulo || ""));
+    if (D.apoio) t.append(el("p", "apoio", D.apoio));
+    if (D.preco || D.botao) {
+      const linha = el("div", "linha");
+      linha.append(D.preco ? el("span", "preco", D.preco) : el("span"));
+      if (D.botao) linha.append(el("span", "botao", D.botao));
+      t.append(linha);
+    }
+    if (D.rodape) t.append(el("p", "rodape", D.rodape));
+    a.append(t);
+
+    if (D.modelo) { const m = el("div", "tarja-modelo", "MODELO — NÃO PUBLICAR"); m.setAttribute("data-livre", ""); a.append(m); }
+    alvo.append(a);
+  });
+})();
+</script>
+</body>
+</html>

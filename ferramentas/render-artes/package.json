@@ -1,0 +1,13 @@
+{
+  "name": "dumi-render-artes",
+  "private": true,
+  "type": "module",
+  "description": "Renderiza templates HTML de artes do Dumi Sabores Orientais em PNG (feed, story, carrossel). Copiado do motor do Mercado Casa Grande.",
+  "scripts": {
+    "render": "node render.mjs",
+    "conferir": "node conferir.mjs"
+  },
+  "dependencies": {
+    "playwright": "1.63.0"
+  }
+}

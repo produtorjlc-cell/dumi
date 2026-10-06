@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Carrossel Dumi</title>
+<!--
+  TEMPLATE DE CARROSSEL — DUMI SABORES ORIENTAIS (v1, 03/10/2026)
+  Motor: ferramentas/render-artes/render.mjs (cada .slide tem data-out="slide-NN.png", 1080×1350).
+  Conferência: ferramentas/render-artes/conferir.mjs (margem 60 px laterais / 40 px topo-base).
+  Como usar: copiar para marketing/producao/AAAA-MM/<ID>/carrossel.html e editar SÓ o bloco DADOS abaixo.
+  Skill: .claude/skills/dumi-carrossel/SKILL.md · Agente: .claude/agents/editor-carrossel.md
+  Marca: paleta e fontes do cardápio online (tailwind-config.js) — ver img/PALETA-DUMI.md.
+  Exemplo abaixo: 5 slides com pratos e preços REAIS do cardápio (app.js). Sai com tarja "MODELO" até
+  `modelo: false`.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script>
+/* ======================================================================
+   DADOS — a única parte que se edita
+   RAIZ: caminho até a raiz do projeto Dumi.
+     · deste template (ferramentas/render-artes/templates/) → "../../../"
+     · da pasta de uma peça (marketing/producao/AAAA-MM/<ID>/) → "../../../../"
+   foto: caminho a partir da raiz ("img/yakisoba.jpg" ou original em alta, ex. "CHOW MEIN.jpg").
+   Ênfase: *texto entre asteriscos* vira itálico dourado no título.
+   Tipos: "capa" (gancho + foto cheia) · "prato" (1 prato por slide) · "cta" (pedido, último slide).
+   preco: só valores de briefing/fatos.json → precos_confirmados (o conferir.mjs cobra).
+   ====================================================================== */
+const DADOS = {
+  RAIZ: "../../../",
+  modelo: true,                       // true = carimba "MODELO — NÃO PUBLICAR"
+  slides: [
+    { tipo: "capa",
+      kicker: "Cardápio Dumi",
+      titulo: "Uma viagem pela Ásia, *prato a prato.*",
+      apoio: "Pratos de 9 países da Ásia, direto para o seu delivery.",
+      foto: "img/mesa-guioza.jpg",
+      deslize: "Arraste" },
+    { tipo: "prato",
+      kicker: "Japão",
+      titulo: "Yakisoba",
+      apoio: "Macarrão, legumes, verduras e proteínas refogados em um molho espesso à base de shoyu.",
+      preco: "R$ 38,00",
+      foto: "img/yakisoba.jpg" },
+    { tipo: "prato",
+      kicker: "China",
+      titulo: "Chow Mein",
+      apoio: "Macarrão, mignon bovino e suíno, sobrecoxa de frango, camarão na manteiga, gengibre e temperos especiais.",
+      preco: "R$ 45,00",
+      foto: "CHOW MEIN.jpg" },
+    { tipo: "prato",
+      kicker: "Vietnã",
+      titulo: "Kho Tauy",
+      apoio: "Panceta caramelizada, água de coco, anis estrelado, pimenta e temperos especiais.",
+      preco: "R$ 34,00",
+      foto: "KHO TAUY.jpg" },
+    { tipo: "cta",
+      kicker: "Bateu a vontade?",
+      titulo: "Peça pelo *iFood*",
+      apoio: "Delivery exclusivo via iFood. Dúvidas? Chama no WhatsApp.",
+      botao: "Peça agora pelo iFood",
+      rodape: ["Av. Waldemar Spranger, 881 - Sala 5", "Jardim São Jorge, Londrina - PR", "@dumisaboresorientais"] }
+  ]
+};
+</script>
+
+<style>
+  /* ---------- Tokens da marca Dumi (fonte: tailwind-config.js + index.html) ---------- */
+  :root {
+    --bg: #121212;          /* fundo */
+    --surface: #1B1B1B;     /* painéis */
+    --surface2: #212121;
+    --gold: #D4AF37;        /* kicker, origem, preço, fios */
+    --gold-light: #E9CD73;
+    --red: #C8102E;         /* flor do logo, acentos */
+    --red-cta-a: #E5233F;   /* gradiente do botão iFood */
+    --red-cta-b: #9C0C24;
+    --text: #FFFFFF;
+    --muted: #E5E7EB;
+    --serif: "Playfair Display", Georgia, serif;
+    --sans: "Inter", Arial, sans-serif;
+    /* padrão de ondas douradas do site, a 5% */
+    --padrao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='36'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-opacity='0.05' stroke-width='1'%3E%3Cpath d='M0 36 A18 18 0 0 1 36 36 A18 18 0 0 1 72 36'/%3E%3Cpath d='M0 18 A18 18 0 0 1 36 18 A18 18 0 0 1 72 18'/%3E%3Cpath d='M0 0 A18 18 0 0 1 36 0 A18 18 0 0 1 72 0'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 40px; background: #2b2b2b; display: flex; flex-direction: column; gap: 40px; }
+
+  /* ---------- Slide (feed 4:5) ---------- */
+  .slide {
+    position: relative; width: 1080px; height: 1350px; overflow: hidden; flex: none;
+    background: var(--bg) var(--padrao) repeat; color: var(--text); font-family: var(--sans);
+  }
+
+  /* Foto: cheia (capa) ou faixa superior (prato) */
+  .foto { position: absolute; left: 0; top: 0; width: 100%; object-fit: cover; }
+  .capa .foto { height: 100%; }
+  .prato .foto { height: 800px; }
+  .vela { position: absolute; inset: 0; pointer-events: none; }
+  .capa .vela { background: linear-gradient(to top, #121212 0%, rgba(18,18,18,.92) 30%, rgba(18,18,18,.25) 62%, rgba(18,18,18,.55) 100%); }
+  .prato .vela { background: linear-gradient(to bottom, rgba(18,18,18,.6) 0%, rgba(18,18,18,0) 20%, rgba(18,18,18,0) 40%, #121212 60%); }
+  .cta { background:
+           radial-gradient(circle at 50% 28%, rgba(200,16,46,.30), transparent 58%),
+           var(--bg) var(--padrao) repeat; }
+
+  /* Cabeçalho: logo + contador */
+  .logo { position: absolute; left: 60px; top: 56px; width: 96px; height: 96px; border-radius: 50%; overflow: hidden; background: #000; box-shadow: 0 6px 24px rgba(0,0,0,.45); }
+  .logo img { display: block; width: 180%; height: 180%; margin: -40%; }   /* recorta o fundo branco do PNG */
+  .contador { position: absolute; right: 60px; top: 86px; font: 600 24px/1 var(--sans); letter-spacing: .18em; color: var(--gold); }
+
+  /* Bloco de texto ancorado na base */
+  .texto { position: absolute; left: 60px; right: 60px; bottom: 150px; }
+  .kicker { display: flex; align-items: center; gap: 18px; font: 600 26px/1.2 var(--sans); letter-spacing: .32em; text-transform: uppercase; color: var(--gold); margin: 0 0 26px; }
+  .kicker::before { content: ""; width: 56px; height: 2px; background: var(--gold); flex: none; }
+  .titulo { font: 700 100px/1.04 var(--serif); margin: 0; letter-spacing: -.01em; }
+  .capa .titulo { font-size: 112px; }
+  .titulo em { font-style: italic; font-weight: 600; color: var(--gold-light); }
+  .apoio { font: 400 32px/1.42 var(--sans); color: var(--muted); margin: 28px 0 0; max-width: 900px; }
+  .preco { display: flex; align-items: center; gap: 22px; margin-top: 34px; font: 600 58px/1 var(--serif); color: var(--gold); }
+  .preco::after { content: ""; height: 2px; flex: 1; background: linear-gradient(90deg, var(--gold), transparent); }
+
+  /* CTA */
+  .cta .logo-grande { position: absolute; left: 50%; top: 170px; width: 240px; height: 240px; margin-left: -120px; border-radius: 50%; overflow: hidden; background: #000; box-shadow: 0 0 0 2px rgba(212,175,55,.5), 0 20px 60px rgba(0,0,0,.6); }
+  .cta .logo-grande img { display: block; width: 180%; height: 180%; margin: -40%; }
+  .cta .texto { top: 480px; bottom: auto; text-align: center; }
+  .cta .kicker { justify-content: center; }
+  .cta .kicker::after { content: ""; width: 56px; height: 2px; background: var(--gold); flex: none; }
+  .cta .apoio { margin-left: auto; margin-right: auto; }
+  .botao { display: inline-block; margin-top: 48px; padding: 30px 64px; border-radius: 999px; font: 700 34px/1 var(--sans); letter-spacing: .02em; color: #fff;
+           background: linear-gradient(135deg, var(--red-cta-a), var(--red-cta-b)); box-shadow: 0 12px 36px rgba(200,16,46,.45); }
+  .rodape { position: absolute; left: 60px; right: 60px; bottom: 120px; text-align: center; font: 500 26px/1.5 var(--sans); color: var(--muted); }
+  .rodape p { margin: 0; }
+  .rodape p:last-child { color: var(--gold); margin-top: 10px; }
+
+  /* Progresso (pontos) + dica de deslize */
+  .pontos { position: absolute; left: 60px; bottom: 64px; display: flex; gap: 12px; }
+  .pontos i { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,.25); }
+  .pontos i.ativo { width: 40px; border-radius: 6px; background: var(--red); }
+  .cta .pontos { left: 50%; transform: translateX(-50%); }
+  .deslize { position: absolute; right: 60px; bottom: 54px; font: 600 24px/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+
+  /* Tarja de segurança do modelo (ignorada pelo conferir.mjs via data-livre) */
+  .tarja-modelo { position: absolute; left: -200px; right: -200px; top: 46%; padding: 18px 0; transform: rotate(-24deg);
+                  background: rgba(200,16,46,.85); color: #fff; text-align: center; font: 800 44px/1 var(--sans); letter-spacing: .3em; }
+</style>
+</head>
+<body>
+<main id="slides"></main>
+
+<script>
+/* ======================================================================
+   MONTAGEM — não precisa editar. Cria um .slide por item de DADOS.slides.
+   Texto entra por textContent (sem HTML solto); *ênfase* vira <em>.
+   ====================================================================== */
+(function () {
+  const raiz = DADOS.RAIZ;
+  const total = DADOS.slides.length;
+  const dois = (n) => String(n).padStart(2, "0");
+  const el = (tag, cls, txt) => { const e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; };
+  const comEnfase = (tag, cls, txt) => {
+    const e = el(tag, cls);
+    String(txt).split("*").forEach((parte, i) => { if (!parte) return; e.append(i % 2 ? el("em", null, parte) : document.createTextNode(parte)); });
+    return e;
+  };
+  const foto = (src) => { const i = el("img", "foto"); i.src = raiz + src; i.alt = ""; return i; };
+  const logo = (cls) => { const d = el("div", cls); const i = el("img"); i.src = raiz + "img/logo.png"; i.alt = "Dumi Sabores Orientais"; d.append(i); return d; };
+  const pontos = (n) => { const d = el("div", "pontos"); for (let k = 1; k <= total; k++) { const i = el("i"); if (k === n) i.className = "ativo"; d.append(i); } return d; };
+
+  const alvo = document.getElementById("slides");
+  DADOS.slides.forEach((s, idx) => {
+    const n = idx + 1;
+    const sec = el("section", "slide " + s.tipo);
+    sec.setAttribute("data-out", "slide-" + dois(n) + ".png");
+
+    if (s.tipo === "capa" || s.tipo === "prato") { sec.append(foto(s.foto), el("div", "vela"), logo("logo")); }
+    if (s.tipo === "cta") { sec.append(logo("logo-grande")); }
+    if (s.tipo !== "cta") sec.append(el("div", "contador", dois(n) + " / " + dois(total)));
+
+    const t = el("div", "texto");
+    if (s.kicker) t.append(el("p", "kicker", s.kicker));
+    t.append(comEnfase("h2", "titulo", s.titulo || ""));
+    if (s.apoio) t.append(el("p", "apoio", s.apoio));
+    if (s.preco) t.append(el("div", "preco", s.preco));
+    if (s.botao) { const w = el("div"); w.append(el("span", "botao", s.botao)); t.append(w); }
+    sec.append(t);
+
+    if (s.rodape) { const r = el("div", "rodape"); s.rodape.forEach((l) => r.append(el("p", null, l))); sec.append(r); }
+    sec.append(pontos(n));
+    if (s.deslize) sec.append(el("div", "deslize", s.deslize + " ›"));
+    if (DADOS.modelo) { const m = el("div", "tarja-modelo", "MODELO — NÃO PUBLICAR"); m.setAttribute("data-livre", ""); sec.append(m); }
+
+    alvo.append(sec);
+  });
+})();
+</script>
+</body>
+</html>

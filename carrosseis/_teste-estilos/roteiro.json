@@ -1,0 +1,93 @@
+{
+  "nome": "TESTE TEMPORÁRIO de estilos — Nikumanju (apagar)",
+  "treinamento": "petiscos",
+  "fontes": ["carrosseis/_base/instituto.md §4.1 (Nikumanju)"],
+  "meta": {
+    "curso": "petiscos",
+    "pautaId": "petiscos-nikumanju-pao-oriental",
+    "arco": "produto",
+    "referenciaId": "ref-olho-magico",
+    "gancho": "Já provou pão oriental no vapor?",
+    "palavraCta": "CARDÁPIO",
+    "creditos": []
+  },
+  "slides": [
+    {
+      "funcao": "gancho",
+      "modo": "full",
+      "foto": "carrosseis/_base/fotos-reais/dumi-img-3056.jpg",
+      "pos": { "x": 0.5, "y": 0.5 },
+      "eyebrow": "Japão · Petiscos",
+      "titulo": [
+        { "t": "Já provou pão", "peso": 500, "tam": 64 },
+        { "t": "oriental no vapor?", "peso": 400, "tam": 76, "italico": true, "cor": "vermelho" }
+      ]
+    },
+    {
+      "funcao": "valor",
+      "modo": "papel",
+      "faixa": { "foto": "img/nikumanju.jpg", "pos": { "x": 0.5, "y": 0.5 }, "altura": 0.3 },
+      "eyebrow": "No cardápio",
+      "titulo": [
+        { "t": "Nikumanju", "peso": 700, "tam": 76 },
+        { "t": "é pão recheado.", "peso": 400, "tam": 68, "italico": true }
+      ],
+      "corpo": "Pão oriental com recheio de carne suína, legumes e temperos especiais."
+    },
+    {
+      "funcao": "valor",
+      "modo": "marinho",
+      "numero": { "valor": "02", "rotulo": "Unidades" },
+      "titulo": [
+        { "t": "Dois pães", "peso": 500, "tam": 62 },
+        { "t": "por porção.", "peso": 400, "tam": 76, "italico": true }
+      ],
+      "corpo": "A porção do cardápio vem com 2 unidades, para dividir ou não."
+    },
+    {
+      "funcao": "valor",
+      "modo": "full",
+      "foto": "carrosseis/_base/fotos-reais/dumi-img-3052.jpg",
+      "pos": { "x": 0.5, "y": 0.5 },
+      "titulo": [
+        { "t": "Por dentro,", "peso": 500, "tam": 60 },
+        { "t": "o recheio.", "peso": 400, "tam": 78, "italico": true }
+      ],
+      "caixaMarinho": { "texto": "Carne suína e legumes" }
+    },
+    {
+      "funcao": "valor",
+      "modo": "marinho",
+      "citacao": { "texto": "Uma viagem pela Ásia, prato a prato.", "autor": "Dumi" },
+      "tarja": { "tipo": "barra", "texto": "O Nikumanju vem do Japão, um dos 9 países do cardápio." }
+    },
+    {
+      "funcao": "ponte",
+      "modo": "papel",
+      "eyebrow": "Onde provar",
+      "titulo": [
+        { "t": "Japão,", "peso": 700, "tam": 72 },
+        { "t": "na sua mesa.", "peso": 400, "tam": 72, "italico": true }
+      ],
+      "lista": [
+        { "rotulo": "Petisco", "texto": "Nikumanju" },
+        { "rotulo": "Origem", "texto": "Japão" },
+        { "rotulo": "Pedido", "texto": "Pelo iFood, link na bio" }
+      ]
+    },
+    {
+      "funcao": "cta",
+      "modo": "marinho",
+      "titulo": [
+        { "t": "Bateu", "peso": 500, "tam": 62 },
+        { "t": "a vontade?", "peso": 400, "tam": 84, "italico": true }
+      ],
+      "cta": [
+        { "estilo": "palavra", "rotulo": "Comente a palavra", "texto": "CARDÁPIO" },
+        { "estilo": "link", "rotulo": "E marque quem divide", "texto": "a porção com você" }
+      ],
+      "dica": false
+    }
+  ],
+  "legenda": ["Já provou pão oriental no vapor?", "", "Teste temporário de estilos.", "Comente CARDÁPIO.", "#Nikumanju #Londrina"]
+}

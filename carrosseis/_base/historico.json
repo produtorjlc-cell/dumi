@@ -1,0 +1,39 @@
+{
+  "versao": 1,
+  "entregas": [
+    {
+      "data": "2026-10-06",
+      "slug": "petiscos-guyoza-cozida-e-frita",
+      "curso": "petiscos",
+      "pautaId": "petiscos-guyoza-cozida-e-frita",
+      "arco": "educativo",
+      "referenciaId": "ref-ardosia-vermelha",
+      "gancho": "Guyoza: cozida ou frita? Os dois.",
+      "palavraCta": "QUERO",
+      "creditos": [],
+      "fotos": [
+        "carrosseis/_base/fotos-reais/dumi-img-3047.jpg",
+        "carrosseis/_base/fotos-reais/dumi-20250924-200535.jpg",
+        "carrosseis/_base/fotos-reais/dumi-img-3043.jpg"
+      ],
+      "pastaEntrega": "C:\\CAPCUT\\ENVIAR PARA APROVAÇÃO\\DUMI\\2026-10-06-petiscos-guyoza-cozida-e-frita"
+    },
+    {
+      "data": "2026-10-06",
+      "slug": "experiencia-como-pedir-ifood",
+      "curso": "experiencia",
+      "pautaId": "experiencia-como-pedir-ifood",
+      "arco": "produto",
+      "referenciaId": "ref-editorial-branco",
+      "gancho": "Quer Dumi em casa? É pelo iFood.",
+      "palavraCta": "DELIVERY",
+      "creditos": [],
+      "fotos": [
+        "carrosseis/_base/fotos-reais/dumi-20250924-195327.jpg",
+        "img/restaurante-dentro.jpg",
+        "carrosseis/_base/fotos-reais/dumi-img-3056.jpg"
+      ],
+      "pastaEntrega": "C:\\CAPCUT\\ENVIAR PARA APROVAÇÃO\\DUMI\\2026-10-06-experiencia-como-pedir-ifood"
+    }
+  ]
+}

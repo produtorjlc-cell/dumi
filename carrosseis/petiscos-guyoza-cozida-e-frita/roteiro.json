@@ -1,0 +1,111 @@
+{
+  "nome": "Carrossel — Petiscos · Guyoza: cozida e frita",
+  "treinamento": "petiscos",
+  "fontes": [
+    "carrosseis/_base/instituto.md §4.1 (Guyoza: \"Massa cozida e frita com recheio de carne suína e temperos especiais (02 unid).\")",
+    "carrosseis/_base/fotos.md (fotos reais dumi-img-3047, dumi-20250924-200535, dumi-img-3043)"
+  ],
+  "meta": {
+    "curso": "petiscos",
+    "pautaId": "petiscos-guyoza-cozida-e-frita",
+    "arco": "educativo",
+    "referenciaId": "ref-ardosia-vermelha",
+    "gancho": "Guyoza: cozida ou frita? Os dois.",
+    "palavraCta": "QUERO",
+    "creditos": [],
+    "_tecnicas": "loop aberto (1→3/4), quebra de padrão (1), prova pelo conteúdo — descrição literal do cardápio (3–5), especificidade (2 unidades), reciprocidade (7)"
+  },
+  "slides": [
+    {
+      "funcao": "gancho",
+      "modo": "full",
+      "foto": "carrosseis/_base/fotos-reais/dumi-img-3047.jpg",
+      "pos": { "x": 0.5, "y": 0.45 },
+      "eyebrow": "Japão · Petiscos",
+      "titulo": [
+        { "t": "Guyoza: cozida ou frita?", "peso": 500, "tam": 60 },
+        { "t": "Os dois.", "peso": 400, "tam": 96, "italico": true, "cor": "vermelho" }
+      ]
+    },
+    {
+      "funcao": "valor",
+      "modo": "papel",
+      "faixa": { "foto": "carrosseis/_base/fotos-reais/dumi-20250924-200535.jpg", "pos": { "x": 0.6, "y": 0.42 }, "altura": 0.3 },
+      "eyebrow": "No cardápio",
+      "titulo": [
+        { "t": "Massa cozida", "peso": 700, "tam": 72 },
+        { "t": "e frita.", "peso": 400, "tam": 76, "italico": true }
+      ],
+      "corpo": "É assim que o cardápio descreve a guyoza: as duas técnicas no mesmo petisco."
+    },
+    {
+      "funcao": "valor",
+      "modo": "marinho",
+      "numero": { "valor": "01", "rotulo": "Cozida" },
+      "titulo": [
+        { "t": "A massa", "peso": 500, "tam": 60 },
+        { "t": "fica macia.", "peso": 400, "tam": 78, "italico": true }
+      ],
+      "corpo": "O cozimento deixa a massa macia em volta do recheio."
+    },
+    {
+      "funcao": "valor",
+      "modo": "full",
+      "foto": "carrosseis/_base/fotos-reais/dumi-img-3043.jpg",
+      "pos": { "x": 0.5, "y": 0.5 },
+      "numero": { "valor": "02", "rotulo": "Frita" },
+      "titulo": [
+        { "t": "E ganha", "peso": 500, "tam": 60 },
+        { "t": "o dourado.", "peso": 400, "tam": 82, "italico": true }
+      ],
+      "corpo": "Na fritura, a massa ganha cor: é o dourado que você vê na foto."
+    },
+    {
+      "funcao": "valor",
+      "modo": "marinho",
+      "numero": { "valor": "03", "rotulo": "Recheio" },
+      "titulo": [
+        { "t": "Carne suína", "peso": 500, "tam": 62 },
+        { "t": "e temperos.", "peso": 400, "tam": 78, "italico": true }
+      ],
+      "corpo": "Por dentro, carne suína e temperos especiais. A porção vem com 2 unidades."
+    },
+    {
+      "funcao": "ponte",
+      "modo": "papel",
+      "eyebrow": "Onde provar",
+      "titulo": [
+        { "t": "Japão,", "peso": 700, "tam": 72 },
+        { "t": "na sua mesa.", "peso": 400, "tam": 72, "italico": true }
+      ],
+      "lista": [
+        { "rotulo": "Petisco", "texto": "Guyoza" },
+        { "rotulo": "No cardápio", "texto": "Petiscos orientais" },
+        { "rotulo": "Pedido", "texto": "Pelo iFood — link na bio" }
+      ]
+    },
+    {
+      "funcao": "cta",
+      "modo": "marinho",
+      "titulo": [
+        { "t": "Deu vontade", "peso": 500, "tam": 62 },
+        { "t": "de provar?", "peso": 400, "tam": 84, "italico": true }
+      ],
+      "cta": [
+        { "estilo": "palavra", "rotulo": "Comente a palavra", "texto": "QUERO" },
+        { "estilo": "link", "rotulo": "E marque quem divide", "texto": "a porção com você" }
+      ],
+      "dica": false
+    }
+  ],
+  "legenda": [
+    "Guyoza: cozida ou frita? Os dois.",
+    "",
+    "No cardápio do Dumi, a guyoza é massa cozida e frita, com recheio de carne suína e temperos especiais: o cozimento deixa a massa macia e a fritura dá o dourado. A porção vem com 2 unidades.",
+    "",
+    "Comente QUERO e a gente te mostra onde achar no cardápio 👇",
+    "Peça pelo iFood — link na bio. E marque quem divide a porção com você.",
+    "",
+    "#Guyoza #ComidaOriental #CulinariaAsiatica #Londrina #DumiSaboresOrientais"
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "nome": "Carrossel de teste — Pratos · O segredo do yakisoba",
+  "treinamento": "pratos",
+  "fontes": [
+    "briefing/CLIENT-BRIEF.md",
+    "carrosseis/_base/instituto.md §4.2"
+  ],
+  "meta": {
+    "curso": "pratos",
+    "pautaId": "pratos-yakisoba-molho-shoyu",
+    "arco": "educativo",
+    "referenciaId": "ref-ardosia-vermelha",
+    "gancho": "O segredo do yakisoba está no molho.",
+    "palavraCta": "DELIVERY",
+    "creditos": [],
+    "_tecnicas": "loop aberto (1→3), especificidade + prova pelo conteúdo (2–4), identificação (6), reciprocidade (6)"
+  },
+  "slides": [
+    {
+      "funcao": "gancho",
+      "modo": "full",
+      "foto": "img/ambiente-hero.jpg",
+      "pos": {
+        "x": 0.5,
+        "y": 0.62
+      },
+      "eyebrow": "Japão · Pratos",
+      "titulo": [
+        {
+          "t": "O segredo do yakisoba",
+          "peso": 500,
+          "tam": 64
+        },
+        {
+          "t": "está no molho.",
+          "peso": 400,
+          "tam": 88,
+          "italico": true
+        }
+      ]
+    },
+    {
+      "funcao": "valor",
+      "modo": "papel",
+      "faixa": {
+        "foto": "img/yakisoba.jpg",
+        "pos": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "altura": 0.27
+      },
+      "eyebrow": "O que leva",
+      "titulo": [
+        {
+          "t": "Tudo refogado",
+          "peso": 700,
+          "tam": 76
+        },
+        {
+          "t": "junto.",
+          "peso": 400,
+          "tam": 76,
+          "italico": true
+        }
+      ],
+      "corpo": "Macarrão, legumes, verduras e proteínas, refogados num molho só."
+    },
+    {
+      "funcao": "valor",
+      "modo": "marinho",
+      "numero": {
+        "valor": "01",
+        "rotulo": "Espesso"
+      },
+      "titulo": [
+        {
+          "t": "Um molho que",
+          "peso": 500,
+          "tam": 60
+        },
+        {
+          "t": "abraça cada fio.",
+          "peso": 400,
+          "tam": 76,
+          "italico": true
+        }
+      ],
+      "corpo": "É o molho espesso que leva o sabor a cada garfada — do primeiro ao último fio."
+    },
+    {
+      "funcao": "valor",
+      "modo": "full",
+      "foto": "PRATOS DUMI.jpeg",
+      "pos": {
+        "x": 0.7,
+        "y": 0.5
+      },
+      "numero": {
+        "valor": "02",
+        "rotulo": "Shoyu"
+      },
+      "titulo": [
+        {
+          "t": "A base",
+          "peso": 500,
+          "tam": 62
+        },
+        {
+          "t": "é shoyu.",
+          "peso": 400,
+          "tam": 84,
+          "italico": true
+        }
+      ],
+      "corpo": "Shoyu é o molho de soja da cozinha japonesa — e é a base do molho do nosso Yakisoba.",
+      "zoom": 1.7
+    },
+    {
+      "funcao": "ponte",
+      "modo": "papel",
+      "eyebrow": "Onde provar",
+      "titulo": [
+        {
+          "t": "Japão,",
+          "peso": 700,
+          "tam": 72
+        },
+        {
+          "t": "prato a prato.",
+          "peso": 400,
+          "tam": 72,
+          "italico": true
+        }
+      ],
+      "lista": [
+        {
+          "rotulo": "Prato",
+          "texto": "Yakisoba"
+        },
+        {
+          "rotulo": "No cardápio",
+          "texto": "Pratos individuais"
+        },
+        {
+          "rotulo": "Pedido",
+          "texto": "Pelo iFood — link na bio"
+        }
+      ]
+    },
+    {
+      "funcao": "cta",
+      "modo": "marinho",
+      "titulo": [
+        {
+          "t": "Bateu",
+          "peso": 500,
+          "tam": 62
+        },
+        {
+          "t": "a vontade?",
+          "peso": 400,
+          "tam": 84,
+          "italico": true
+        }
+      ],
+      "cta": [
+        {
+          "estilo": "palavra",
+          "rotulo": "Comente a palavra",
+          "texto": "DELIVERY"
+        },
+        {
+          "estilo": "link",
+          "rotulo": "E marque quem divide",
+          "texto": "a mesa com você"
+        }
+      ],
+      "dica": false
+    }
+  ],
+  "legenda": [
+    "O segredo do yakisoba está no molho.",
+    "",
+    "No Yakisoba do Dumi, macarrão, legumes, verduras e proteínas são refogados num molho espesso à base de shoyu — e é esse molho que leva o sabor a cada garfada.",
+    "",
+    "Comente DELIVERY e a gente te mostra como achar o Dumi no iFood 👇",
+    "Peça pelo iFood — link na bio. E marque quem divide a mesa com você.",
+    "",
+    "#Yakisoba #ComidaOriental #CulinariaAsiatica #Londrina #DumiSaboresOrientais"
+  ]
+}

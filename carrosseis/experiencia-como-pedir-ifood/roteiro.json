@@ -1,0 +1,112 @@
+{
+  "nome": "Carrossel — Experiência · Como pedir o Dumi pelo iFood",
+  "treinamento": "experiencia",
+  "fontes": [
+    "carrosseis/_base/instituto.md §1 (pedido/delivery exclusivo via iFood; @dumisaboresorientais) e §4.5",
+    "index.html (rodapé: \"Delivery exclusivo via iFood\") e app.js (IFOOD_URL com utm_content=link_in_bio)",
+    "carrosseis/_base/fotos.md (fotos reais dumi-20250924-195327, dumi-img-3056; img/restaurante-dentro.jpg)"
+  ],
+  "meta": {
+    "curso": "experiencia",
+    "pautaId": "experiencia-como-pedir-ifood",
+    "arco": "produto",
+    "referenciaId": "ref-editorial-branco",
+    "gancho": "Quer Dumi em casa? É pelo iFood.",
+    "palavraCta": "DELIVERY",
+    "creditos": [],
+    "_tecnicas": "identificação (1), especificidade — 3 passos (3–5), quebra de objeção \"como peço?\" (2), reciprocidade (7)"
+  },
+  "slides": [
+    {
+      "funcao": "gancho",
+      "modo": "full",
+      "foto": "carrosseis/_base/fotos-reais/dumi-20250924-195327.jpg",
+      "pos": { "x": 0.3, "y": 0.4 },
+      "eyebrow": "Delivery",
+      "titulo": [
+        { "t": "Quer Dumi em casa?", "peso": 500, "tam": 64 },
+        { "t": "É pelo iFood.", "peso": 400, "tam": 88, "italico": true }
+      ]
+    },
+    {
+      "funcao": "valor",
+      "modo": "papel",
+      "faixa": { "foto": "img/restaurante-dentro.jpg", "pos": { "x": 0.5, "y": 0.4 }, "altura": 0.3 },
+      "eyebrow": "Como funciona",
+      "titulo": [
+        { "t": "Delivery", "peso": 700, "tam": 80 },
+        { "t": "só pelo iFood.", "peso": 400, "tam": 72, "italico": true }
+      ],
+      "corpo": "O delivery do Dumi é exclusivo via iFood. São 3 passos."
+    },
+    {
+      "funcao": "valor",
+      "modo": "marinho",
+      "numero": { "valor": "01", "rotulo": "Link na bio" },
+      "titulo": [
+        { "t": "Abra o link", "peso": 500, "tam": 62 },
+        { "t": "da bio.", "peso": 400, "tam": 80, "italico": true }
+      ],
+      "corpo": "No perfil @dumisaboresorientais, o link da bio leva direto ao Dumi no iFood."
+    },
+    {
+      "funcao": "valor",
+      "modo": "full",
+      "foto": "carrosseis/_base/fotos-reais/dumi-img-3056.jpg",
+      "pos": { "x": 0.5, "y": 0.45 },
+      "numero": { "valor": "02", "rotulo": "Escolha" },
+      "titulo": [
+        { "t": "Petiscos, pratos", "peso": 500, "tam": 60 },
+        { "t": "e sobremesas.", "peso": 400, "tam": 80, "italico": true }
+      ],
+      "corpo": "Uma viagem pela Ásia, prato a prato: do Nikumanju japonês ao Khuushuur da Mongólia."
+    },
+    {
+      "funcao": "valor",
+      "modo": "marinho",
+      "numero": { "valor": "03", "rotulo": "Peça" },
+      "titulo": [
+        { "t": "Finalize", "peso": 500, "tam": 62 },
+        { "t": "no iFood.", "peso": 400, "tam": 80, "italico": true }
+      ],
+      "corpo": "Pedido feito, é só acompanhar pelo próprio iFood."
+    },
+    {
+      "funcao": "ponte",
+      "modo": "papel",
+      "eyebrow": "Resumo",
+      "titulo": [
+        { "t": "Do desejo", "peso": 700, "tam": 72 },
+        { "t": "ao pedido.", "peso": 400, "tam": 72, "italico": true }
+      ],
+      "lista": [
+        { "rotulo": "Delivery", "texto": "Só pelo iFood — link na bio" },
+        { "rotulo": "Cardápio", "texto": "Petiscos, pratos, sobremesas e drinks" },
+        { "rotulo": "Dúvidas", "texto": "Chame o Dumi no WhatsApp" }
+      ]
+    },
+    {
+      "funcao": "cta",
+      "modo": "marinho",
+      "titulo": [
+        { "t": "Bateu", "peso": 500, "tam": 62 },
+        { "t": "a fome?", "peso": 400, "tam": 84, "italico": true }
+      ],
+      "cta": [
+        { "estilo": "palavra", "rotulo": "Comente a palavra", "texto": "DELIVERY" },
+        { "estilo": "link", "rotulo": "E marque quem", "texto": "pede com você" }
+      ],
+      "dica": false
+    }
+  ],
+  "legenda": [
+    "Quer Dumi em casa? É pelo iFood.",
+    "",
+    "O delivery do Dumi é exclusivo via iFood: abra o link da bio do @dumisaboresorientais, escolha entre petiscos, pratos e sobremesas e finalize o pedido no iFood. Dúvidas? Chame o Dumi no WhatsApp.",
+    "",
+    "Comente DELIVERY e conte qual prato vai pedir primeiro 👇",
+    "E marque quem pede com você.",
+    "",
+    "#Delivery #ComidaOriental #CulinariaAsiatica #Londrina #DumiSaboresOrientais"
+  ]
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Dumi Sabores Orientais | Cardápio Digital</title>
+<meta name="description" content="Cardápio digital do Dumi Sabores Orientais — petiscos, pratos, sobremesas e drinks de 9 países da Ásia. Peça agora pelo iFood.">
+<meta name="theme-color" content="#121212">
+
+<meta property="og:title" content="Dumi Sabores Orientais | Cardápio Digital">
+<meta property="og:description" content="Petiscos, pratos, sobremesas e drinks de origem asiática. Peça pelo iFood.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/logo.png">
+
+<link rel="icon" href="img/logo.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="tailwind-config.js"></script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #121212;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='36'%3E%3Cg fill='none' stroke='%23D4AF37' stroke-opacity='0.05' stroke-width='1'%3E%3Cpath d='M0 36 A18 18 0 0 1 36 36 A18 18 0 0 1 72 36'/%3E%3Cpath d='M0 18 A18 18 0 0 1 36 18 A18 18 0 0 1 72 18'/%3E%3Cpath d='M0 0 A18 18 0 0 1 36 0 A18 18 0 0 1 72 0'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+  ::-webkit-scrollbar { height: 6px; width: 6px; }
+  ::-webkit-scrollbar-thumb { background: #C8102E; border-radius: 4px; }
+  ::-webkit-scrollbar-track { background: #1B1B1B; }
+  html { scrollbar-color: #C8102E #1B1B1B; }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-up.in-view { opacity: 1; transform: translateY(0); }
+
+  .tab-btn { position: relative; }
+  .tab-btn.active { color: #E5233F; }
+  .tab-btn.active::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -13px; height: 2px;
+    background: linear-gradient(90deg, transparent, #E5233F, transparent);
+  }
+
+  .placeholder-art {
+    background:
+      radial-gradient(circle at 50% 35%, rgba(212,175,55,0.14), transparent 60%),
+      linear-gradient(160deg, #1c1c1c 0%, #111111 100%);
+  }
+
+  .card-img { transition: transform .7s ease; }
+  .card:hover .card-img { transform: scale(1.08); }
+
+  .modal-backdrop { backdrop-filter: blur(4px); }
+
+  #dish-modal { transition: opacity .25s ease; }
+  #dish-modal .modal-panel { transition: transform .3s ease, opacity .3s ease; }
+
+  .ifood-btn {
+    background: linear-gradient(135deg, #E5233F, #9C0C24);
+  }
+  .ifood-btn:hover { background: linear-gradient(135deg, #F02E4B, #B0101F); }
+  .ifood-btn:active { transform: scale(0.97); }
+
+  @keyframes floatPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(200,16,46,0.45); }
+    50% { box-shadow: 0 0 0 12px rgba(200,16,46,0); }
+  }
+  .pulse-cta { animation: floatPulse 2.6s ease-in-out infinite; }
+
+  .promo-badge {
+    background: linear-gradient(135deg, #C8102E, #9C0C24);
+    box-shadow: 0 4px 20px rgba(200,16,46,0.35);
+  }
+</style>
+</head>
+<body class="bg-bg text-white font-sans antialiased pb-24 sm:pb-0">
+
+<!-- ================= CABEÇALHO ================= -->
+<header id="navbar" class="fixed top-0 inset-x-0 z-40 transition-colors duration-300 bg-bg/80 backdrop-blur border-b border-white/5">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <a href="#topo" class="flex items-center gap-3">
+      <img src="img/logo.png" alt="Dumi Sabores Orientais" class="w-9 h-9 rounded-full object-cover">
+      <div class="leading-none">
+        <p class="font-display text-lg tracking-wide">DUMI</p>
+        <p class="text-[9px] tracking-[0.25em] text-gold -mt-0.5">SABORES ORIENTAIS</p>
+      </div>
+    </a>
+    <div class="hidden sm:flex items-center gap-5">
+      <a href="#localizacao" class="text-xs text-textmuted hover:text-red transition">Localização</a>
+      <a href="https://www.instagram.com/dumisaboresorientais/" target="_blank" rel="noopener" class="text-xs text-textmuted hover:text-red transition">Instagram</a>
+      <a href="https://www.ifood.com.br/delivery/londrina-pr/dumi-sabores-orientais-colonial/441a1b9e-961e-4c71-b29b-7c34fa4727f8?utm_content=link_in_bio&amp;utm_medium=social&amp;utm_source=ig" target="_blank" rel="noopener" class="ifood-btn text-white text-xs font-bold px-4 py-2 rounded-full tracking-wide">
+        Pedir no iFood
+      </a>
+    </div>
+    <a href="https://www.ifood.com.br/delivery/londrina-pr/dumi-sabores-orientais-colonial/441a1b9e-961e-4c71-b29b-7c34fa4727f8?utm_content=link_in_bio&amp;utm_medium=social&amp;utm_source=ig" target="_blank" rel="noopener" class="sm:hidden ifood-btn text-white text-xs font-bold px-3.5 py-2 rounded-full">
+      iFood
+    </a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="topo" class="relative w-full bg-bg overflow-hidden pt-16 md:pt-0 md:min-h-[80vh] md:flex md:items-end">
+  <div class="relative w-full aspect-video md:absolute md:inset-0 md:aspect-auto md:h-full overflow-hidden">
+    <video
+      class="absolute inset-0 w-full h-full object-cover object-center"
+      autoplay muted loop playsinline
+      poster="img/ambiente-hero.jpg">
+      <source src="img/hero-promo.mp4" type="video/mp4">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/10 to-transparent md:via-bg/70 md:to-bg/30"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-bg/60 via-transparent to-transparent"></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 pt-8 pb-10 md:pt-24 md:pb-20 w-full">
+    <img src="img/logo.png" alt="" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mb-6 fade-up">
+    <p class="text-gold tracking-[0.35em] text-xs sm:text-sm mb-3 fade-up">— SABORES ORIENTAIS —</p>
+    <h1 class="font-display text-4xl sm:text-6xl leading-[1.05] max-w-2xl fade-up">
+      Uma viagem pela Ásia, prato a prato.
+    </h1>
+
+    <a href="https://urlgeni.us/ifood/comboyakisoba" target="_blank" rel="noopener" class="promo-badge inline-flex items-center gap-2 text-white text-xs sm:text-sm font-semibold px-4 py-2.5 rounded-full mt-5 fade-up hover:brightness-110 transition">
+      <span class="text-base">🎉</span>
+      Promoção: peça um Yakisoba e ganhe um Nikumanju de brinde
+    </a>
+
+    <p class="text-textmuted mt-5 max-w-xl text-sm sm:text-base fade-up">
+      Sabores autênticos de Japão, China, Tailândia, Indonésia, Vietnã, Mongólia, Malásia, Coreia e Singapura — direto para o seu delivery.
+    </p>
+    <div class="flex flex-wrap gap-3 mt-8 fade-up">
+      <a href="#cardapio" class="border border-red text-red hover:bg-red hover:text-white transition-colors px-6 py-3 rounded-full text-sm font-semibold tracking-wide">
+        Ver Cardápio
+      </a>
+      <a href="https://urlgeni.us/ifood/comboyakisoba" target="_blank" rel="noopener" class="ifood-btn text-white px-6 py-3 rounded-full text-sm font-bold tracking-wide">
+        Peça Agora pelo iFood
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABAS DE CATEGORIA ================= -->
+<nav id="tabs-wrap" class="sticky top-16 z-30 bg-bg/95 backdrop-blur border-b border-white/5">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div id="tabs" class="flex gap-7 overflow-x-auto no-scrollbar py-4 text-sm font-medium tracking-wide">
+      <button data-cat="petiscos" class="tab-btn active shrink-0 text-white/90 py-2">Petiscos Orientais</button>
+      <button data-cat="pratos" class="tab-btn shrink-0 text-white/90 py-2">Pratos Individuais</button>
+      <button data-cat="sobremesas" class="tab-btn shrink-0 text-white/90 py-2">Sobremesas</button>
+      <button data-cat="drinks" class="tab-btn shrink-0 text-white/90 py-2">Drinks</button>
+      <button data-cat="bebidas" class="tab-btn shrink-0 text-white/90 py-2">Bebidas</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= CARDÁPIO ================= -->
+<main id="cardapio" class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+  <div id="cat-heading" class="mb-8">
+    <h2 id="cat-title" class="font-display text-3xl sm:text-4xl">Petiscos Orientais</h2>
+    <p id="cat-sub" class="text-textmuted text-sm mt-2 max-w-lg"></p>
+  </div>
+
+  <div id="grid-photo" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  <div id="grid-simple" class="hidden divide-y divide-white/5 border-t border-b border-white/5"></div>
+</main>
+
+<!-- ================= LOCALIZAÇÃO ================= -->
+<section id="localizacao" class="border-t border-white/5 bg-surface/40">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+    <div class="mb-10 max-w-xl">
+      <p class="text-gold text-xs tracking-[0.3em] mb-3">ONDE ESTAMOS</p>
+      <h2 class="font-display text-3xl mb-5">Visite o Dumi</h2>
+      <p class="text-textmuted text-sm leading-relaxed mb-1">Av. Waldemar Spranger, 881 - Sala 5</p>
+      <p class="text-textmuted text-sm leading-relaxed mb-1">Jardim São Jorge, Londrina - PR</p>
+      <p class="text-textmuted text-sm leading-relaxed mb-6">CEP 86047-285</p>
+
+      <div class="flex flex-wrap gap-3">
+        <a href="https://www.google.com/maps/search/Av.%20Waldemar%20Spranger%2C%20881%20-%20Sala%205%20-%20Jardim%20Sao%20Jorge%2C%20Londrina%20-%20PR%2C%2086047-285%2C%20Brasil/@-23.344,-51.1624,17z?hl=pt-BR"
+           target="_blank" rel="noopener"
+           class="border border-red text-red hover:bg-red hover:text-white transition-colors px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide">
+          Como Chegar
+        </a>
+        <a href="https://wa.me/554396695824" target="_blank" rel="noopener"
+           class="border border-white/20 text-white hover:border-red hover:text-red transition-colors px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide">
+          Dúvidas? Fale no WhatsApp
+        </a>
+        <a href="https://www.instagram.com/dumisaboresorientais/" target="_blank" rel="noopener"
+           class="border border-white/20 text-white hover:border-red hover:text-red transition-colors px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide">
+          @dumisaboresorientais
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="rounded-2xl overflow-hidden border border-white/10 aspect-[3/4] fade-up">
+        <img src="img/faixada-restaurante.jpg" alt="Fachada do Dumi Sabores Orientais à noite" class="w-full h-full object-cover">
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-white/10 h-72 sm:h-auto fade-up">
+        <iframe
+          title="Mapa Dumi Sabores Orientais"
+          class="w-full h-full grayscale-[30%] contrast-125"
+          style="border:0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=Av.+Waldemar+Spranger,+881+-+Sala+5+-+Jardim+Sao+Jorge,+Londrina+-+PR,+86047-285,+Brasil&output=embed">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RODAPÉ ================= -->
+<footer class="border-t border-white/5">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-5">
+    <div class="flex items-center gap-3">
+      <img src="img/logo.png" alt="Dumi Sabores Orientais" class="w-9 h-9 rounded-full">
+      <div class="leading-none">
+        <p class="font-display text-sm">DUMI Sabores Orientais</p>
+        <p class="text-[10px] text-textmuted mt-1">Delivery exclusivo via iFood</p>
+      </div>
+    </div>
+    <p class="text-[11px] text-textmuted/70 text-center sm:text-right">
+      © <span id="ano"></span> Dumi Sabores Orientais. Todos os direitos reservados.
+    </p>
+  </div>
+</footer>
+
+<!-- ================= BOTÃO FLUTUANTE ================= -->
+<a href="https://www.ifood.com.br/delivery/londrina-pr/dumi-sabores-orientais-colonial/441a1b9e-961e-4c71-b29b-7c34fa4727f8?utm_content=link_in_bio&amp;utm_medium=social&amp;utm_source=ig" target="_blank" rel="noopener"
+   class="pulse-cta ifood-btn fixed bottom-4 inset-x-4 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-auto z-50 text-white font-bold text-sm px-6 py-3.5 rounded-full flex items-center justify-center gap-2 shadow-2xl shadow-black/50">
+  <span>🛵</span> Peça Agora pelo iFood
+</a>
+
+<!-- ================= MODAL DO PRATO ================= -->
+<div id="dish-modal" class="fixed inset-0 z-[60] hidden opacity-0">
+  <div id="modal-backdrop" class="modal-backdrop absolute inset-0 bg-black/70"></div>
+  <div class="relative z-10 h-full w-full flex items-end sm:items-center justify-center p-0 sm:p-6">
+    <div class="modal-panel opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95 bg-surface w-full sm:max-w-lg sm:rounded-2xl rounded-t-2xl overflow-hidden max-h-[90vh] flex flex-col border border-white/10">
+      <div class="relative aspect-[4/3] shrink-0 bg-black" id="modal-img-wrap">
+        <img id="modal-img" src="" alt="" class="w-full h-full object-cover">
+        <button id="modal-close" class="absolute top-3 right-3 w-10 h-10 rounded-full bg-black/60 hover:bg-black/80 text-white flex items-center justify-center text-lg">✕</button>
+        <span id="modal-flag" class="absolute bottom-3 left-3 bg-red/90 backdrop-blur px-3 py-1 rounded-full text-xs font-medium text-white"></span>
+      </div>
+      <div class="p-6 overflow-y-auto flex-1 min-h-0">
+        <h3 id="modal-name" class="font-display text-2xl mb-1"></h3>
+        <p id="modal-price" class="text-gold font-semibold text-lg mb-4"></p>
+        <p class="text-[10px] tracking-[0.2em] text-textmuted mb-1.5">INGREDIENTES &amp; PREPARO</p>
+        <p id="modal-desc" class="text-textmuted text-sm leading-relaxed mb-3"></p>
+        <p id="modal-note" class="text-white/80 text-sm leading-relaxed italic"></p>
+      </div>
+      <div class="p-4 border-t border-white/10 shrink-0" style="padding-bottom:max(1rem, env(safe-area-inset-bottom))">
+        <a id="modal-ifood" href="https://www.ifood.com.br/delivery/londrina-pr/dumi-sabores-orientais-colonial/441a1b9e-961e-4c71-b29b-7c34fa4727f8?utm_content=link_in_bio&amp;utm_medium=social&amp;utm_source=ig" target="_blank" rel="noopener"
+           class="ifood-btn text-white font-bold text-sm px-6 py-3.5 rounded-full flex items-center justify-center gap-2 w-full min-h-[48px]">
+          🛵 Pedir no iFood
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

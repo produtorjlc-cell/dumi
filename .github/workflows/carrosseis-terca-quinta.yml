@@ -1,0 +1,116 @@
+# Rotina de carrosséis — terça e quinta 10:00 (America/Sao_Paulo = 13:00 UTC),
+# 2 carrosséis por execução (4 por semana).
+#
+# Espelha a rotina semanal do Instituto Kaizen. Dois jobs:
+#   validar — sempre: instala o motor, mostra a fila de referências e renderiza (rascunho)
+#             todos os roteiros de carrosseis/*/ — prova a cada execução de que motor, fontes, base
+#             e estilos estão íntegros. PNGs saem como artefato.
+#   rotina  — opcional: roda o prompt carrosseis/_base/ROTINA-TERCA-QUINTA.md com o Claude
+#             Code (gera e entrega os 2 carrosséis da execução). Liga com a variável de repositório
+#             CARROSSEIS_ROTINA=true (agendado) ou pelo botão "Run workflow" (rotina=true).
+#             Exige o segredo ANTHROPIC_API_KEY. A "pasta de aprovação" no CI é um artefato
+#             (o runner não enxerga C:\CAPCUT); a entrega local continua sendo a tarefa
+#             agendada do Claude descrita em ROTINA-TERCA-QUINTA.md.
+# Nada é postado: tudo passa por aprovação humana.
+
+name: Carrosséis — terça e quinta
+
+on:
+  schedule:
+    - cron: "0 13 * * 2,4"
+  workflow_dispatch:
+    inputs:
+      rotina:
+        description: "Rodar também a rotina com Claude (gera e entrega os 2 carrosséis da execução)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: carrosseis-terca-quinta
+  cancel-in-progress: false
+
+jobs:
+  validar:
+    name: Validar motor, base e estilos
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Instalar dependências do motor
+        run: npm install --prefix scripts/carrossel --no-audit --no-fund
+
+      - name: Próximas referências da fila
+        run: node scripts/carrossel/historico.mjs --proxima
+
+      - name: Render de conferência (rascunho) de todos os roteiros
+        run: |
+          set -e
+          shopt -s nullglob
+          for r in carrosseis/*/roteiro.json; do
+            echo "::group::$r"
+            node scripts/carrossel/gerar.mjs "$r" --formato=ambos --rascunho
+            echo "::endgroup::"
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: carrosseis-conferencia
+          path: |
+            carrosseis/*/slide-*.png
+            carrosseis/*/story/slide-*.png
+            carrosseis/*/legenda.txt
+          if-no-files-found: ignore
+          retention-days: 14
+
+  rotina:
+    name: Rotina de terça e quinta (Claude)
+    needs: validar
+    if: ${{ (github.event_name == 'schedule' && vars.CARROSSEIS_ROTINA == 'true') || (github.event_name == 'workflow_dispatch' && inputs.rotina) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      DUMI_ENTREGA_DIR: ${{ github.workspace }}/aprovacao
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Instalar dependências do motor
+        run: npm install --prefix scripts/carrossel --no-audit --no-fund
+
+      - name: Preparar pasta de aprovação e skill
+        run: |
+          mkdir -p "$DUMI_ENTREGA_DIR" ~/.claude/skills/dumi-carousel-designer
+          cp .github/carrosseis/SKILL.md ~/.claude/skills/dumi-carousel-designer/SKILL.md
+
+      - name: Rodar a rotina (Claude Code)
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Leia e execute à risca carrosseis/_base/ROTINA-TERCA-QUINTA.md.
+            Ambiente de CI: o repositório está no diretório atual (não em C:\Users\...), e a
+            pasta de aprovação é a definida em DUMI_ENTREGA_DIR (já criada) — o motor já
+            usa essa variável no --entregar. Não faça commit nem push.
+          claude_args: --allowedTools "Bash(node:*),Bash(ls:*),Bash(cat:*),Read,Write,Edit,Glob,Grep,WebFetch"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: carrosseis-para-aprovacao
+          path: |
+            aprovacao/
+            carrosseis/_base/historico.json
+            carrosseis/*/roteiro.json
+          if-no-files-found: warn
+          retention-days: 30

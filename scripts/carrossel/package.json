@@ -1,0 +1,13 @@
+{
+  "name": "dumi-carrosseis-motor",
+  "private": true,
+  "description": "Motor de carrosséis (portado do Instituto Kaizen). Dependências só do motor; instale com: npm install --prefix scripts/carrossel",
+  "scripts": {
+    "carrossel": "node gerar.mjs",
+    "proxima": "node historico.mjs --proxima"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "2.6.2",
+    "sharp": "0.35.4"
+  }
+}

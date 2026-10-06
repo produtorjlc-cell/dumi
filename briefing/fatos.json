@@ -1,0 +1,32 @@
+{
+  "_comentario": "Fatos do Dumi em formato de máquina. Lido por ferramentas/render-artes/conferir.mjs. Fonte: index.html + app.js do cardápio online e briefing do painel-conteudo (03/10/2026). Espelha briefing/CLIENT-BRIEF.md — alterar os dois juntos.",
+  "cliente": "Dumi Sabores Orientais",
+  "instagram": "@dumisaboresorientais",
+  "endereco": "Av. Waldemar Spranger, 881 - Sala 5",
+  "bairro_cidade": "Jardim São Jorge, Londrina - PR",
+  "cep": "86047-285",
+  "telefones_permitidos": ["9669-5824"],
+  "links": {
+    "ifood": "https://www.ifood.com.br/delivery/londrina-pr/dumi-sabores-orientais-colonial/441a1b9e-961e-4c71-b29b-7c34fa4727f8",
+    "ifood_combo_yakisoba": "https://urlgeni.us/ifood/comboyakisoba",
+    "whatsapp": "https://wa.me/554396695824",
+    "instagram": "https://www.instagram.com/dumisaboresorientais/"
+  },
+  "horario": null,
+  "precos_confirmados": [
+    "R$4,00", "R$5,00", "R$7,00", "R$10,00", "R$12,00",
+    "R$18,00", "R$19,00", "R$20,00", "R$23,00", "R$25,00", "R$27,00",
+    "R$34,00", "R$35,00", "R$38,00", "R$40,00", "R$45,00", "R$50,00", "R$60,00"
+  ],
+  "promocoes": [
+    { "texto": "Peça um Yakisoba e ganhe um Nikumanju de brinde", "validade": null, "fonte": "hero do index.html", "publicar": false }
+  ],
+  "termos_proibidos": [
+    { "termo": "sushi", "motivo": "não está no cardápio online — confirmar com o Dumi" },
+    { "termo": "rodízio", "motivo": "não consta no cardápio" },
+    { "termo": "frete grátis", "motivo": "sem fonte; delivery é pelo iFood" },
+    { "termo": "entrega grátis", "motivo": "sem fonte; delivery é pelo iFood" },
+    { "termo": "delivery próprio", "motivo": "delivery é exclusivo via iFood" },
+    { "termo": "Produção JLC", "motivo": "identidade da agência não aparece nas peças do cliente" }
+  ]
+}

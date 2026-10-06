@@ -1,0 +1,372 @@
+# HANDOFF — ESTADO OPERACIONAL DO PROJETO
+
+> Este arquivo registra o estado atual do projeto para continuidade entre sessões, agentes e desenvolvedores.
+>
+> **IMPORTANTE:** Leia `CLAUDE.md` antes de continuar.
+
+---
+
+# 1. IDENTIFICAÇÃO
+
+**Projeto:**
+[Nome do projeto]
+
+**Cliente:**
+[Nome do cliente]
+
+**Tipo de projeto:**
+[Site / App / Agente IA / SDR / Suporte / Automação / Redes Sociais / Outro]
+
+**Status:**
+[Planejamento / Desenvolvimento / Validação / Produção / Concluído / Bloqueado]
+
+**Última atualização:**
+[DD/MM/AAAA]
+
+**Última sessão por:**
+[Claude / João / outro]
+
+---
+
+# 2. OBJETIVO DO PROJETO
+
+Descrever em poucas linhas o resultado principal que o projeto deve entregar.
+
+Exemplo:
+
+Criar uma landing page institucional para gerar contatos pelo WhatsApp e apresentar os serviços da empresa com identidade visual premium.
+
+---
+
+# 3. ESTADO ATUAL
+
+## O que já existe
+
+Descrever o estado real do projeto.
+
+Exemplo:
+
+* estrutura Next.js criada;
+* identidade visual aplicada;
+* Home implementada;
+* formulário conectado ao webhook;
+* deploy funcionando.
+
+## O que já está validado
+
+Registrar somente aquilo que realmente foi testado.
+
+Exemplo:
+
+* build passou;
+* lint passou;
+* formulário enviado com sucesso;
+* mobile validado;
+* deploy publicado.
+
+---
+
+# 4. NÃO REPETIR
+
+Registrar aqui trabalhos importantes que já foram executados e não precisam ser refeitos.
+
+Exemplo:
+
+* Auditoria inicial de UX concluída em 27/09/2026.
+* Estrutura de componentes definida.
+* Integração com webhook validada.
+* SEO técnico básico validado.
+* Deploy de produção validado.
+
+## Regra
+
+Se nenhuma alteração posterior afetou esses itens, não repetir a auditoria apenas para gerar uma nova confirmação.
+
+---
+
+# 5. PRÓXIMA AÇÃO
+
+## Próximo passo obrigatório
+
+Descrever UMA próxima ação objetiva.
+
+Exemplo:
+
+> Corrigir o comportamento do menu mobile em `src/components/Header.tsx`.
+
+## Depois disso
+
+Descrever somente os próximos passos já conhecidos.
+
+1. Validar menu mobile.
+2. Atualizar handoff.
+3. Parar.
+
+---
+
+# 6. DECISÕES IMPORTANTES
+
+Registrar decisões que não devem ser revertidas sem necessidade.
+
+Exemplo:
+
+* Não usar banco externo neste estágio.
+* WhatsApp é o principal CTA.
+* O projeto utiliza a identidade visual oficial do cliente.
+* O deploy atual deve ser preservado.
+* Não alterar a estrutura de leads existente.
+
+---
+
+# 7. RESTRIÇÕES / NÃO FAZER
+
+Registrar limitações específicas do projeto.
+
+Exemplo:
+
+* Não alterar dados existentes.
+* Não trocar o provedor de deploy.
+* Não recriar integrações.
+* Não remover assets existentes.
+* Não migrar banco sem autorização.
+* Não criar uma nova fonte de verdade.
+
+---
+
+# 8. ARQUITETURA
+
+## Stack
+
+[Preencher]
+
+## Frontend
+
+[Preencher]
+
+## Backend / API
+
+[Preencher]
+
+## Banco
+
+[Preencher]
+
+## Integrações
+
+[Preencher]
+
+## Automação
+
+[Preencher]
+
+## IA
+
+[Preencher]
+
+---
+
+# 9. FONTES DA VERDADE
+
+## Cliente
+
+`01-briefing/`
+
+## Branding
+
+`05-branding-cliente/`
+
+## Referências
+
+`06-referencias-visuais/`
+
+## Configuração
+
+`07-configuracoes/`
+
+## Código
+
+[Diretório principal]
+
+## Dados
+
+[Diretório / banco]
+
+## Deploy
+
+[URL / plataforma]
+
+---
+
+# 10. ASSETS DO CLIENTE
+
+Registrar onde estão:
+
+* logo
+* fotos
+* vídeos
+* fontes
+* paleta
+* materiais institucionais
+* produtos
+* documentos
+* referências aprovadas
+
+Exemplo:
+
+`05-branding-cliente/logo/`
+
+`05-branding-cliente/fotos/`
+
+`05-branding-cliente/videos/`
+
+---
+
+# 11. LINKS IMPORTANTES
+
+**Produção:**
+[URL]
+
+**Preview:**
+[URL]
+
+**Repositório:**
+[URL]
+
+**Dashboard:**
+[URL]
+
+**Webhook / Integração:**
+[URL ou descrição]
+
+Não registrar secrets ou tokens.
+
+---
+
+# 12. VARIÁVEIS DE AMBIENTE
+
+Registrar somente nomes das variáveis.
+
+Exemplo:
+
+`NEXT_PUBLIC_SITE_URL`
+
+`OPENAI_API_KEY`
+
+`WHATSAPP_TOKEN`
+
+`GOOGLE_CLIENT_ID`
+
+Nunca registrar valores reais neste arquivo.
+
+---
+
+# 13. INTEGRAÇÕES
+
+| Integração    | Finalidade  | Estado   |
+| ------------- | ----------- | -------- |
+| WhatsApp      | Atendimento | Ativo    |
+| Google Sheets | CRM         | Ativo    |
+| Calendar      | Agendamento | Pendente |
+
+Atualizar conforme o projeto.
+
+---
+
+# 14. VALIDAÇÕES REALIZADAS
+
+Registrar:
+
+| Data       | Validação  | Resultado |
+| ---------- | ---------- | --------- |
+| 27/09/2026 | Build      | PASSOU    |
+| 27/09/2026 | Lint       | PASSOU    |
+| 27/09/2026 | Mobile     | PASSOU    |
+| 27/09/2026 | Formulário | PASSOU    |
+
+Não registrar uma validação que não foi executada.
+
+---
+
+# 15. PROBLEMAS CONHECIDOS
+
+Registrar somente problemas reais.
+
+Exemplo:
+
+* animação do hero apresenta atraso em dispositivos lentos;
+* integração X ainda depende da credencial do cliente;
+* versão mobile do componente Y ainda precisa de ajuste.
+
+---
+
+# 16. PENDÊNCIAS
+
+## Alta prioridade
+
+[Pendência]
+
+## Média prioridade
+
+[Pendência]
+
+## Baixa prioridade
+
+[Pendência]
+
+Não adicionar tarefas hipotéticas.
+
+---
+
+# 17. HISTÓRICO RECENTE
+
+## [DD/MM/AAAA]
+
+### Alterado
+
+* [item]
+
+### Validado
+
+* [item]
+
+### Resultado
+
+* [resultado]
+
+---
+
+# 18. CHECKPOINT DA SESSÃO
+
+### O que foi feito
+
+[Resumo objetivo]
+
+### O que foi validado
+
+[Resumo objetivo]
+
+### O que NÃO foi alterado
+
+[Resumo objetivo, quando relevante]
+
+### Próximo passo
+
+[Uma ação]
+
+---
+
+# 19. INSTRUÇÃO PARA O PRÓXIMO AGENTE
+
+Continue a partir do estado registrado neste documento.
+
+Não refaça automaticamente auditorias, pesquisas, testes ou implementações já concluídas.
+
+Primeiro verifique a última alteração e execute somente a próxima ação necessária.
+
+Preserve o trabalho existente.
+
+Evite refatorações fora do escopo.
+
+Ao concluir a próxima tarefa:
+
+**VALIDAR → ATUALIZAR HANDOFF → PARAR**

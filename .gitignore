@@ -1,0 +1,10 @@
+.vercel
+.env*
+node_modules/
+# Nomes muito longos
+carrosseis/_base/referencias-img/
+# Build, logs, assets temporários
+node_modules/
+*.log
+.env
+carrosseis/_base/referencias-img/
